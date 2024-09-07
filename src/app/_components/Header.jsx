@@ -16,10 +16,10 @@ const Header = () => {
         <div className='flex gap-4'>
           {isSignedIn ? (<UserButton />) : (
             <>
-            <Link href='/dashborad'>
+            <Link href='/dashboard'>
               <Button variant='outline' className='rounded-full text-xl p-6'>Dashboard</Button>
             </Link>
-            <Link href='/dashborad'>
+            <Link href='/dashboard'>
               <Button className='rounded-full text-xl p-6'>Get Started</Button>
             </Link>
             </>

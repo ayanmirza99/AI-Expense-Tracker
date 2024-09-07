@@ -43,12 +43,11 @@ const page = () => {
                 Eligendi nam dolorum aliquam, quibusdam aperiam voluptatum.
               </p>
             </div>
-
             <SignIn />
           </div>
         </main>
       </div>
-    </section> 
+    </section>
   )
 }
 
