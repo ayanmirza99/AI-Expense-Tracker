@@ -8,8 +8,6 @@ const DashboardHeader = ({ expand, setExpand, mobileScreen }) => {
             <div className='flex items-center gap-4 z-20 text-xl lg:text-3xl text-primary font-bold'>
                 {mobileScreen && (<Menu onClick={() => {
                     setExpand(!expand)
-                    console.log("clicked")
-
                 }} />)}
                 <div className='flex justify-center items-center'>
 

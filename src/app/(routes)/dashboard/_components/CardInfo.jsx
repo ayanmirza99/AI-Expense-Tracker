@@ -1,6 +1,6 @@
-import { CircleDollarSign, PiggyBank, ReceiptText, Wallet } from 'lucide-react';
-import React, { useEffect, useState } from 'react'
-import formatNumber from '../../../../../utils';
+import { CircleDollarSign, PiggyBank, ReceiptText, Wallet } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import formatNumber from "../../../../../utils";
 
 const CardInfo = ({ budgetList, incomeList, expenseList }) => {
   const [totalBudget, setTotalBudget] = useState(0);
@@ -9,7 +9,11 @@ const CardInfo = ({ budgetList, incomeList, expenseList }) => {
   // const [financialAdvice, setFinancialAdvice] = useState("");
 
   useEffect(() => {
-    if (budgetList.length > 0 || incomeList.length > 0 || expenseList.length > 0) {
+    if (
+      budgetList.length > 0 ||
+      incomeList.length > 0 ||
+      expenseList.length > 0
+    ) {
       CalculateCardInfo();
     }
   }, [budgetList, incomeList, expenseList]);
@@ -35,16 +39,16 @@ const CardInfo = ({ budgetList, incomeList, expenseList }) => {
     let totalIncome_ = 0;
 
     budgetList.forEach((elem) => {
-      totalBudget_ = totalBudget_ + elem.amount;
+      totalBudget_ = totalBudget_ + Number(elem.amount);
     });
 
     incomeList.forEach((elem) => {
-      totalIncome_ = totalIncome_ + elem.amount;
+      totalIncome_ = totalIncome_ + Number(elem.amount);
     });
 
     expenseList.forEach((elem) => {
-      totalSpend_ = totalSpend_ + elem.amount;
-    })
+      totalSpend_ = totalSpend_ + Number(elem.expense);
+    });
 
     setTotalIncome(totalIncome_);
     setTotalBudget(totalBudget_);
@@ -53,73 +57,53 @@ const CardInfo = ({ budgetList, incomeList, expenseList }) => {
 
   return (
     <>
-      {budgetList?.length > 0 ?
-        (
-          <>
-            <div className="p-7 min-w-[300px] border rounded-2xl flex items-center justify-between">
-              <div>
-                <h2 className="text-md">Total Budget</h2>
-                <h2 className="font-bold text-2xl">
-                  Rs. {formatNumber(totalBudget)}
-                </h2>
-              </div>
-              <PiggyBank className="bg-primary p-3 h-12 w-12 rounded-full text-white" />
+      {budgetList?.length > 0 ? (
+        <>
+          <div className="p-7 min-w-[300px] border shadow-md rounded-2xl flex items-center justify-between">
+            <div>
+              <h2 className="text-md">Total Budget</h2>
+              <h2 className="font-bold text-2xl">
+                Rs. {formatNumber(totalBudget)}
+              </h2>
             </div>
-            <div className="p-7 min-w-[300px] border rounded-2xl flex items-center justify-between">
-              <div>
-                <h2 className="text-md">Total Spend</h2>
-                <h2 className="font-bold text-2xl">
-                  Rs. {formatNumber(totalSpend)}
-                </h2>
-              </div>
-              <ReceiptText className="bg-primary p-3 h-12 w-12 rounded-full text-white" />
+            <PiggyBank className="bg-primary p-3 h-12 w-12 rounded-full text-white" />
+          </div>
+          <div className="p-7 min-w-[300px] border shadow-md rounded-2xl flex items-center justify-between">
+            <div>
+              <h2 className="text-md">Total Expense</h2>
+              <h2 className="font-bold text-2xl">
+                Rs. {formatNumber(totalSpend)}
+              </h2>
             </div>
-            <div className="p-7 min-w-[300px] border rounded-2xl flex items-center justify-between">
-              <div>
-                <h2 className="text-md">No. Of Budget</h2>
-                <h2 className="font-bold text-2xl">{budgetList?.length}</h2>
-              </div>
-              <Wallet className="bg-primary p-3 h-12 w-12 rounded-full text-white" />
+            <ReceiptText className="bg-primary p-3 h-12 w-12 rounded-full text-white" />
+          </div>
+          <div className="p-7 min-w-[300px] border shadow-md rounded-2xl flex items-center justify-between">
+            <div>
+              <h2 className="text-md">No. Of Budget</h2>
+              <h2 className="font-bold text-2xl">{budgetList?.length}</h2>
             </div>
-            <div className="p-7 min-w-[300px] border rounded-2xl flex items-center justify-between">
-              <div>
-                <h2 className="text-md">Sum of Income Streams</h2>
-                <h2 className="font-bold text-2xl">
-                  Rs. {formatNumber(totalIncome)}
-                </h2>
-              </div>
-              <CircleDollarSign className="bg-primary p-3 h-12 w-12 rounded-full text-white" />
+            <Wallet className="bg-primary p-3 h-12 w-12 rounded-full text-white" />
+          </div>
+          <div className="p-7 min-w-[300px] border shadow-md rounded-2xl flex items-center justify-between">
+            <div>
+              <h2 className="text-md">Sum of Income Streams</h2>
+              <h2 className="font-bold text-2xl">
+                Rs. {formatNumber(totalIncome)}
+              </h2>
             </div>
-          </>
-        ) : (
-          Array.from({ length: 4 }).map((_, index) => (
-            <div
-              className="h-[110px] w-[300px] bg-slate-200 animate-pulse rounded-lg"
-              key={index}
-            ></div>
-          ))
-        )
-      }
+            <CircleDollarSign className="bg-primary p-3 h-12 w-12 rounded-full text-white" />
+          </div>
+        </>
+      ) : (
+        Array.from({ length: 4 }).map((_, index) => (
+          <div
+            className="h-[110px] w-[300px] bg-slate-200 animate-pulse rounded-lg"
+            key={index}
+          ></div>
+        ))
+      )}
     </>
-  )
-}
+  );
+};
 
-export default CardInfo
-{/* <div className="p-7 border mt-4 -mb-1 rounded-2xl flex items-center justify-between">
-  <div className="">
-    <div className="flex mb-2 flex-row space-x-1 items-center ">
-      <h2 className="text-md ">Finan Smart AI</h2>
-      <Sparkles
-        className="rounded-full text-white w-10 h-10 p-2
-bg-gradient-to-r
-from-pink-500
-via-red-500
-to-yellow-500
-background-animate"
-      />
-    </div>
-    <h2 className="font-light text-md">
-      {financialAdvice || "Loading financial advice..."}
-    </h2>
-  </div>
-</div> */}
+export default CardInfo;
