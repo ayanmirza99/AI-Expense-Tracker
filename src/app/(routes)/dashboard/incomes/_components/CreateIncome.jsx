@@ -35,12 +35,12 @@ function CreateIncome({ refreshData }) {
       name: incomeMean,
       amount: amount,
       createdBy: user?.primaryEmailAddress?.emailAddress,
-      icon: emojiIcon,
+      Icon: emojiIcon,
     });
 
     if (result) {
       refreshData();
-      toast("New Income Created!");
+      toast.success("New Income Created!");
     }
   };
   return (

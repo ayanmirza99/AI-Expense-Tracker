@@ -48,7 +48,12 @@ const DashboardLayout = ({ children }) => {
               setExpand={setExpand}
               mobileScreen={mobileScreen}
             />
-            <NextTopLoader color="#4845D2" showAtBottom/>
+            <NextTopLoader
+              color="#4845D2"
+              showAtBottom
+              showSpinner={false}
+              shadow={false}
+            />
             {children}
           </section>
         </div>

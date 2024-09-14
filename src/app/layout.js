@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { GlobalContextProvider } from "@/context/context";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,7 +16,19 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body suppressHydrationWarning>
         <ClerkProvider>
-          <GlobalContextProvider>{children}</GlobalContextProvider>
+          <GlobalContextProvider>
+            {children}
+            <Toaster
+              toastOptions={{
+                classNames: {
+                  error: "bg-red-400 text-white",
+                  success: "bg-green-500 text-white",
+                  warning: "text-yellow-400",
+                  info: "bg-blue-400",
+                },
+              }}
+            />
+          </GlobalContextProvider>
         </ClerkProvider>
       </body>
     </html>
