@@ -47,7 +47,7 @@ export const GlobalContextProvider = ({ children }) => {
       })
       .from(Incomes)
       .groupBy(Incomes.id);
-    setIncomeList(result);
+    result.length > 0 ? setIncomeList(result) : setIncomeList('')
   };
 
   const getAllExpenses = async () => {

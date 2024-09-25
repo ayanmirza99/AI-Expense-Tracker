@@ -42,7 +42,7 @@ const CardInfo = ({ budgetList, incomeList, expenseList }) => {
       totalBudget_ = totalBudget_ + Number(elem.amount);
     });
 
-    incomeList.forEach((elem) => {
+    incomeList !== '' && incomeList.forEach((elem) => {
       totalIncome_ = totalIncome_ + Number(elem.amount);
     });
 
