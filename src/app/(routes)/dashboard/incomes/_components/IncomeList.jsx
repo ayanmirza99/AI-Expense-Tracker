@@ -12,7 +12,6 @@ function BudgetList() {
   useEffect(() => {
     user && getIncomeList();
   }, [user]);
-  console.log(incomeList);
 
   return (
     <div className="mt-7">
